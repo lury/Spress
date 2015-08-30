@@ -67,7 +67,7 @@ class TwigRenderizerTest extends \PHPUnit_Framework_TestCase
     public function testAddTwigFunction()
     {
         $renderizer = $this->getRenderizer();
-        $renderizer->addTwigFunction('fuTest1', function ($param) {
+        $renderizer->addTwigFunction('fuTest1', function($param) {
             return $param;
         });
     }
@@ -75,7 +75,7 @@ class TwigRenderizerTest extends \PHPUnit_Framework_TestCase
     public function testAddTwigFunctionWithOptions()
     {
         $renderizer = $this->getRenderizer();
-        $renderizer->addTwigFunction('fuTest2', function (\Twig_Environment $env, $context, $param) {
+        $renderizer->addTwigFunction('fuTest2', function(\Twig_Environment $env, $context, $param) {
             return $param;
         }, ['needs_context' => true, 'needs_environment' => true]);
     }
@@ -83,7 +83,7 @@ class TwigRenderizerTest extends \PHPUnit_Framework_TestCase
     public function testAddTwigFilter()
     {
         $renderizer = $this->getRenderizer();
-        $renderizer->addTwigFilter('fTest', function ($param) {
+        $renderizer->addTwigFilter('fTest', function($param) {
             return $param;
         });
     }
@@ -91,7 +91,7 @@ class TwigRenderizerTest extends \PHPUnit_Framework_TestCase
     public function testAddTwigFilterWithOptions()
     {
         $renderizer = $this->getRenderizer();
-        $renderizer->addTwigFilter('fTest', function (\Twig_Environment $env, $context, $param) {
+        $renderizer->addTwigFilter('fTest', function(\Twig_Environment $env, $context, $param) {
             return $param;
         }, ['needs_context' => true, 'needs_environment' => true]);
     }
@@ -99,7 +99,7 @@ class TwigRenderizerTest extends \PHPUnit_Framework_TestCase
     public function testAddTwigTest()
     {
         $renderizer = $this->getRenderizer();
-        $renderizer->addTwigFilter('tTest', function () {
+        $renderizer->addTwigFilter('tTest', function() {
             return true;
         });
     }
