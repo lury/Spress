@@ -199,6 +199,10 @@ class HttpServer
         $this->twig = new \Twig_Environment($loader, $options);
     }
 
+    /**
+     * @param integer $statusCode
+     * @param string $data
+     */
     private function getErrorModel($statusCode, $data)
     {
         switch ($statusCode) {
