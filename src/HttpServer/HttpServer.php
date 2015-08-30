@@ -115,6 +115,9 @@ class HttpServer
             $this->documentroot));
     }
 
+    /**
+     * @param integer $statusCode
+     */
     private function logRequest(Request $request, $statusCode)
     {
         $date = new \Datetime();
@@ -131,6 +134,10 @@ class HttpServer
         $this->io->write($data);
     }
 
+    /**
+     * @param string $content
+     * @param string $contentType
+     */
     private function getResponseOk($content, $contentType)
     {
         return [
@@ -140,6 +147,10 @@ class HttpServer
         ];
     }
 
+    /**
+     * @param integer $statusCode
+     * @param string $data
+     */
     private function getResponseError($statusCode, $data)
     {
         $model = $this->getErrorModel($statusCode, $data);
@@ -162,6 +173,9 @@ class HttpServer
         return $path;
     }
 
+    /**
+     * @param string $path
+     */
     private function getMimeTypeFile($path)
     {
         $mimetypeRepo = new PhpRepository();
@@ -169,6 +183,9 @@ class HttpServer
         return $mimetypeRepo->findType(pathinfo($path, PATHINFO_EXTENSION)) ?: $this->defatultMimeType;
     }
 
+    /**
+     * @param string $templateDir
+     */
     private function buildTwig($templateDir)
     {
         $options = [
