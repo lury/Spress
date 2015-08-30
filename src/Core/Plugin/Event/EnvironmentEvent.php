@@ -33,6 +33,7 @@ class EnvironmentEvent extends Event
     protected $dataWriter;
     protected $renderizer;
     protected $io;
+    protected $configValues;
 
     public function __construct(
         DataSourceManager $dataSourceManager,

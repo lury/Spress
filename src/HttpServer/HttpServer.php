@@ -37,7 +37,6 @@ class HttpServer
      * Constructor.
      *
      * @param IOInterface $io
-     * @param TwigFactory $twigFactory
      * @param string      $serverroot
      * @param string      $documentroot
      * @param int         $port

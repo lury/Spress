@@ -30,7 +30,7 @@ class Generator
     /**
      * Set a string or array of directories.
      *
-     * @param array $value
+     * @param string $value
      */
     public function setSkeletonDirs($value)
     {

@@ -140,7 +140,6 @@ class PluginManagerBuilder
     /**
      * Gets metas of a plugin.
      *
-     * @param string                                        $filename The plugin filename.
      * @param \Yosymfony\Spress\Core\Plugin\PluginInterface $plugin   The plugin.
      *
      * @return array

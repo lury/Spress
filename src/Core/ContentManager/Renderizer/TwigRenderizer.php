@@ -35,7 +35,7 @@ class TwigRenderizer implements RenderizerInterface
      */
     public function __construct(\Twig_Environment $twig, \Twig_Loader_Array $arrayLoader, array $layoutExtension)
     {
-        $this->arrayLoaderOrg = $arrayLoader;
+        $this->arrayLoader = $arrayLoader;
         $this->twig = $twig;
         $this->layoutExtension = $layoutExtension;
         $this->arrayLoader = $arrayLoader;
@@ -165,7 +165,7 @@ class TwigRenderizer implements RenderizerInterface
      * @see http://twig.sensiolabs.org/doc/advanced.html#tests Twig documentation.
      *
      * @param string   $name     Name of test
-     * @param callable $function Test implementation
+     * @param callable $test Test implementation
      * @param array    $options
      */
     public function addTwigTest($name, callable $test, array $options = [])
@@ -221,7 +221,7 @@ class TwigRenderizer implements RenderizerInterface
 
             $layout = $this->getLayoutAttribute($attributes, $name);
 
-            if ($layout) {
+            if ($layout !== false) {
                 $fullLayout = $this->getLayoutWithExtension($layout, $name);
 
                 $content = sprintf('{%% extends "%s" %%}%s', $fullLayout, $content);

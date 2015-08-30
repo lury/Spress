@@ -92,7 +92,7 @@ interface ItemInterface
     /**
      * Set the attributes of this item.
      *
-     * @param array $value
+     * @param array $values
      */
     public function setAttributes(array $values);
 

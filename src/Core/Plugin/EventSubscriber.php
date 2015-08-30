@@ -24,7 +24,7 @@ class EventSubscriber
      * Add a listener for one event.
      *
      * @param string   $eventName
-     * @param \closure $listener
+     * @param \closure|string $listener
      */
     public function addEventListener($eventName, $listener)
     {

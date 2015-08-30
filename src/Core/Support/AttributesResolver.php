@@ -31,6 +31,8 @@ class AttributesResolver
     private $notNullables = [];
     private $validators = [];
     private $resolved = [];
+    private $type = [];
+    private $nullables = [];
 
     /**
      * Sets the default value of a given attribute.
