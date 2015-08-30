@@ -1,4 +1,5 @@
 <?php
+namespace MyVendor\TestPlugin;
 
 use Yosymfony\Spress\Core\Plugin\Event;
 use Yosymfony\Spress\Core\Plugin\PluginInterface;

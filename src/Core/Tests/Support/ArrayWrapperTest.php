@@ -140,7 +140,6 @@ class ArrayWrapperTest extends \PHPUnit_Framework_TestCase
 
     public function testWhere()
     {
-        $data = [];
         $a = new ArrayWrapper(['value1' => 1, 'value2' => 2]);
 
         $filtered = $a->where(function ($key, $value) {

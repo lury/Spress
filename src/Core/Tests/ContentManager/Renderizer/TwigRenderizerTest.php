@@ -99,7 +99,7 @@ class TwigRenderizerTest extends \PHPUnit_Framework_TestCase
     public function testAddTwigTest()
     {
         $renderizer = $this->getRenderizer();
-        $renderizer->addTwigFilter('tTest', function ($param) {
+        $renderizer->addTwigFilter('tTest', function () {
             return true;
         });
     }

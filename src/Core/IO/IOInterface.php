@@ -82,7 +82,7 @@ interface IOInterface
      * The question will be asked until the user answers by nothing, yes, or no.
      *
      * @param string|array $question The question to ask
-     * @param bool         $default  The default answer if the user enters nothing
+     * @param bool|string         $default  The default answer if the user enters nothing
      *
      * @return bool true if the user has confirmed, false otherwise
      */
