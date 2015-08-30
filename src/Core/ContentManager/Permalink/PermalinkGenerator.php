@@ -90,13 +90,11 @@ class PermalinkGenerator implements PermalinkGeneratorInterface
 
         if ($item->isBinary() === true) {
             $urlTemplate = '/:path/:basename.:extension';
-            $pathTemplate = $urlTemplate;
         } else {
             switch ($permalinkStyle) {
                 case 'none':
                     $urlTemplate = '/:path/:basename.:extension';
 
-                    $pathTemplate = $urlTemplate;
                     break;
                 case 'ordinal':
                     if ($this->isItemWithDate($item)) {
@@ -111,7 +109,6 @@ class PermalinkGenerator implements PermalinkGeneratorInterface
                         $urlTemplate = '/:path/:basename.:extension';
                     }
 
-                    $pathTemplate = $urlTemplate;
                     break;
                 case 'date':
                     if ($this->isItemWithDate($item)) {
@@ -126,12 +123,10 @@ class PermalinkGenerator implements PermalinkGeneratorInterface
                         $urlTemplate = '/:path/:basename.:extension';
                     }
 
-                    $pathTemplate = $urlTemplate;
                     break;
                 case 'pretty':
                     if ($placeholders[':extension'] !== 'html') {
                         $urlTemplate = '/:path/:basename.:extension';
-                        $pathTemplate = $urlTemplate;
                         break;
                     }
 
@@ -158,11 +153,12 @@ class PermalinkGenerator implements PermalinkGeneratorInterface
                     break;
                 default:
                     $urlTemplate = $permalinkStyle;
-                    $pathTemplate = $urlTemplate;
                     break;
             }
         }
 
+        $pathTemplate = (isset($pathTemplate))?$pathTemplate:$urlTemplate;
+        
         $path = $this->generatePath($pathTemplate, $placeholders);
         $urlPath = $this->generateUrlPath($urlTemplate, $placeholders);
 
