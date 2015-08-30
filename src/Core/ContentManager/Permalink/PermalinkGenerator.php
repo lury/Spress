@@ -158,7 +158,7 @@ class PermalinkGenerator implements PermalinkGeneratorInterface
         }
 
         $pathTemplate = (isset($pathTemplate))?$pathTemplate:$urlTemplate;
-        
+
         $path = $this->generatePath($pathTemplate, $placeholders);
         $urlPath = $this->generateUrlPath($urlTemplate, $placeholders);
 
