@@ -90,73 +90,77 @@ class PermalinkGenerator implements PermalinkGeneratorInterface
 
         if ($item->isBinary() === true) {
             $urlTemplate = '/:path/:basename.:extension';
-            $path = $this->generatePath($urlTemplate, $placeholders);
-            $urlPath = $this->generateUrlPath($urlTemplate, $placeholders);
-
-            return new Permalink($path, $urlPath);
-        }
-
-        switch ($permalinkStyle) {
-            case 'none':
-                $urlTemplate = '/:path/:basename.:extension';
-
-                $pathTemplate = $urlTemplate;
-                break;
-            case 'ordinal':
-                if ($this->isItemWithDate($item)) {
-                    $urlTemplate = '/:categories/:year/:i_day/:title.:extension';
-
-                    if ($this->isCustomCollection($item)) {
-                        $urlTemplate = '/:collection'.$urlTemplate;
-                    }
-                } else {
+            $pathTemplate = $urlTemplate;
+        } else {
+            switch ($permalinkStyle) {
+                case 'none':
                     $urlTemplate = '/:path/:basename.:extension';
-                }
 
-                $pathTemplate = $urlTemplate;
-                break;
-            case 'date':
-                if ($this->isItemWithDate($item)) {
-                    $urlTemplate = '/:categories/:year/:month/:day/:title.:extension';
-
-                    if ($this->isCustomCollection($item)) {
-                        $urlTemplate = '/:collection'.$urlTemplate;
-                    }
-                } else {
-                    $urlTemplate = '/:path/:basename.:extension';
-                }
-
-                $pathTemplate = $urlTemplate;
-                break;
-            case 'pretty':
-                if ($placeholders[':extension'] !== 'html') {
-                    $urlTemplate = '/:path/:basename.:extension';
                     $pathTemplate = $urlTemplate;
                     break;
-                }
+                case 'ordinal':
+                    if ($this->isItemWithDate($item)) {
+                        $urlTemplate =
+                          '/:categories/:year/:i_day/:title.:extension';
 
-                if ($this->isItemWithDate($item)) {
-                    $urlTemplate = '/:categories/:year/:month/:day/:title';
-                    $pathTemplate = '/:categories/:year/:month/:day/:title/index.html';
+                        if ($this->isCustomCollection($item)) {
+                            $urlTemplate = '/:collection' . $urlTemplate;
+                        }
+                    }
+                    else {
+                        $urlTemplate = '/:path/:basename.:extension';
+                    }
 
-                    if ($this->isCustomCollection($item)) {
-                        $urlTemplate = '/:collection'.$urlTemplate;
-                        $pathTemplate = '/:collection'.$pathTemplate;
+                    $pathTemplate = $urlTemplate;
+                    break;
+                case 'date':
+                    if ($this->isItemWithDate($item)) {
+                        $urlTemplate =
+                          '/:categories/:year/:month/:day/:title.:extension';
+
+                        if ($this->isCustomCollection($item)) {
+                            $urlTemplate = '/:collection' . $urlTemplate;
+                        }
                     }
-                } else {
-                    if ($placeholders[':basename'] === 'index') {
-                        $urlTemplate = '/:path';
-                        $pathTemplate = '/:path/index.html';
-                    } else {
-                        $urlTemplate = '/:path/:basename';
-                        $pathTemplate = '/:path/:basename/index.html';
+                    else {
+                        $urlTemplate = '/:path/:basename.:extension';
                     }
-                }
-                break;
-            default:
-                $urlTemplate = $permalinkStyle;
-                $pathTemplate = $urlTemplate;
-                break;
+
+                    $pathTemplate = $urlTemplate;
+                    break;
+                case 'pretty':
+                    if ($placeholders[':extension'] !== 'html') {
+                        $urlTemplate = '/:path/:basename.:extension';
+                        $pathTemplate = $urlTemplate;
+                        break;
+                    }
+
+                    if ($this->isItemWithDate($item)) {
+                        $urlTemplate = '/:categories/:year/:month/:day/:title';
+                        $pathTemplate =
+                          '/:categories/:year/:month/:day/:title/index.html';
+
+                        if ($this->isCustomCollection($item)) {
+                            $urlTemplate = '/:collection' . $urlTemplate;
+                            $pathTemplate = '/:collection' . $pathTemplate;
+                        }
+                    }
+                    else {
+                        if ($placeholders[':basename'] === 'index') {
+                            $urlTemplate = '/:path';
+                            $pathTemplate = '/:path/index.html';
+                        }
+                        else {
+                            $urlTemplate = '/:path/:basename';
+                            $pathTemplate = '/:path/:basename/index.html';
+                        }
+                    }
+                    break;
+                default:
+                    $urlTemplate = $permalinkStyle;
+                    $pathTemplate = $urlTemplate;
+                    break;
+            }
         }
 
         $path = $this->generatePath($pathTemplate, $placeholders);
