@@ -11,15 +11,15 @@
 
 namespace Yosymfony\Spress\Plugin;
 
-use Yosymfony\Spress\Core\Plugin\PluginInterface;
 use Yosymfony\Spress\Core\IO\IOInterface;
+use Yosymfony\Spress\Core\Plugin\PluginInterface;
 
 /**
- * Plugin command interface.
+ * Command plugin interface.
  *
  * @author Victor Puertas <vpgugr@gmail.com>
  */
-interface PluginCommandInterface extends PluginInterface
+interface CommandPluginInterface extends PluginInterface
 {
     /**
      * Gets the command's definition.
